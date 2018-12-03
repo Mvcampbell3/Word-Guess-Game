@@ -4,20 +4,17 @@ var chancePlace = document.getElementById("chancePlace");
 var usedPlace = document.getElementById("usedPlace");
 var nextRound = document.getElementById("nextRound");
 
-function Item(name) {
+function Item(name, noSpaces, quote) {
     this.name = name;
-    this.letters = name.split("");
-    this.setArray = function () {
-        game.correct = this.letters;
-    }
+    this.letters = noSpaces.split("");
+    this.audioID = "audiotag1";
+
 };
-// Need to add another parameter that includes what to display/play when guessed correct.
 
-var metallica = new Item("metallica");
-var nirvana = new Item("nirvana");
-var slipknot = new Item('slipknot');
 
-var gameArray = [metallica, nirvana, slipknot];
+
+var bisping = new Item("michael bisping", "michaelbisping");
+var gameArray = [bisping];
 
 
 
@@ -25,8 +22,10 @@ var game = {
     guess: "",
     tripped: false,
     used: [],
+    audio: "",
     active: "",
     correct: [],
+    interactive: [],
     checkGuess: function () {
         // This is magic the likes of which I have not seen nor can I attempt to explain
         // I wanted to be able to make the NodeList into a real Array
@@ -74,6 +73,7 @@ var game = {
             if (this.correct.length == 0) {
                 console.log("you won");
                 // game.newRound();
+                document.getElementById(game.audio).play();
                 game.beforeNext();
             } else {
                 console.log("keep guessing");
@@ -87,13 +87,19 @@ var game = {
             var number = Math.floor((Math.random() * gameArray.length) + 0);
             game.active = gameArray[number];
             game.correct = gameArray[number].letters;
+            game.audio = gameArray[number].audioID;
+            game.interactive = gameArray[number].name.split("");
             gameArray.splice(number, 1);
             console.log(game.correct);
             console.log(number + " index of array in gameArray set");
             console.log(gameArray) + " is the array left in the gameArray set";
 
-            for (var i = 0; i < game.correct.length; i++) {
-                output.innerHTML += "<div class='new'><h3 class='hidden'>" + game.correct[i] + "</h3></div>";
+            for (var i = 0; i < game.interactive.length; i++) {
+                if (game.interactive[i] != " ") {
+                    output.innerHTML += "<div class='new'><h3 class='hidden'>" + game.interactive[i] + "</h3></div>";
+                } else {
+                    output.innerHTML += "<div class='space'></div>";
+                }
             };
 
 

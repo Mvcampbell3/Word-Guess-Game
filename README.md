@@ -1,4 +1,14 @@
 # Word-Guess-Game
+Commit 4
+
+Beat the brakes off of the space issue, just decided to not be dumb and make new property in item
+
+also added michael bisping audio file, probably not going to be in final version but for testing
+
+audio clips will now play after the word is correctly spelled. don't know about what happens if new round is press
+    before audio ends. testing coming.
+
+--------------------------------------------------------
 Commit 3
 
 Added a modal that gives rules and has start button
@@ -7,6 +17,7 @@ Starting to think about the theme I want to use
 
 I am going to have the modal block out everything, page below will have the themeing
     only thing to transfer over will be the h1.mainTitle
+    
 ---------------------------------------------------------
 Commit2
 
