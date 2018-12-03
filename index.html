@@ -8,21 +8,52 @@
     <title>Document</title>
 
 </head>
-<body onkeyup="game.playerPress(event)" onload="game.start()">
+<body onkeyup="game.playerPress(event)">
+    <div id="modal" class="modal">
+        <div id="rules" class="rules">
+            <div class="inside">
+                <div class="topSection">
+                    <h1 class="mainTitle center">WORD GUESS GAME</h1>
+                </div>
+                <div class="middleSection center">
+                    <h2 class="sectionTitle">Rules and Infomation</h2>
+                    <p class="rule">
+                        Welcome to WORD GUESS GAME.
+                    </p>
+                    <p class="rule">
+                        You will guess the letters in the hidden word by pressing the keys on the keyboard.
+                    </p>
+                    <p class="rule">
+                        You have 6 chances per word.
+                    </p>
+                    <p class="rule">
+                        If you lose all your chances, the game is over
+                    </p>
+                    <p class="rule">
+                        Make it through all of the words to win!
+                    </p>
+                    <p class="rule">Good Luck!</p>
+                </div>
+                <div class="bottomSection">
+                    <div class="btn" id="closeModal" onclick="modal.fade()">Start Game</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="main-body">
+        <header>
+            <h1 class="mainTitle">WORD GUESS GAME</h1>
+        </header>
 
-    <div class="rules"></div>
 
-    <header>
-        <h1 class="mainTitle">WORD GUESS GAME</h1>
-    </header>
+        <div class="container center">
+            <div class="chance" ><h3>Chances left: <span id="chancePlace">6</span></h3></div>
 
-    
-    <div class="container">
-        <div class="chance" ><h3>Chances left: <span id="chancePlace">6</span></h3></div>
+            <div id="output" class="output"></div>
+            <div id="nextRound"></div>
 
-        <div id="output" class="output"></div>
-
-        <div id="usedPlace" class="used"></div>
+            <div class="used">Letters Used: <br><snan id="usedPlace"></snan></div>
+    </div>
     </div>
 
 

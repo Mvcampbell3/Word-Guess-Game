@@ -2,6 +2,7 @@ var output = document.getElementById("output");
 var chances = 6;
 var chancePlace = document.getElementById("chancePlace");
 var usedPlace = document.getElementById("usedPlace");
+var nextRound = document.getElementById("nextRound");
 
 function Item(name) {
     this.name = name;
@@ -24,6 +25,7 @@ var game = {
     guess: "",
     tripped: false,
     used: [],
+    active: "",
     correct: [],
     checkGuess: function () {
         // This is magic the likes of which I have not seen nor can I attempt to explain
@@ -71,7 +73,8 @@ var game = {
         if (chances > 0) {
             if (this.correct.length == 0) {
                 console.log("you won");
-                game.newRound();
+                // game.newRound();
+                game.beforeNext();
             } else {
                 console.log("keep guessing");
             };
@@ -82,13 +85,13 @@ var game = {
     start: function () {
         if (gameArray.length > 0) {
             var number = Math.floor((Math.random() * gameArray.length) + 0);
-
+            game.active = gameArray[number];
             game.correct = gameArray[number].letters;
             gameArray.splice(number, 1);
             console.log(game.correct);
             console.log(number + " index of array in gameArray set");
             console.log(gameArray) + " is the array left in the gameArray set";
-            
+
             for (var i = 0; i < game.correct.length; i++) {
                 output.innerHTML += "<div class='new'><h3 class='hidden'>" + game.correct[i] + "</h3></div>";
             };
@@ -107,13 +110,36 @@ var game = {
         chancePlace.textContent = chances;
         game.used = [];
         usedPlace.textContent = game.used;
+        nextRound.innerHTML = "";
     },
 
-    removeSpaces: function () {
-        console.log("I dont know what I am doing")
+    beforeNext: function(){
+        output.innerHTML = "<h3 class='between'>The Word Was " + game.active.name.toUpperCase() + "</h3>";
+        nextRound.innerHTML = "<button class='newRound btn' onclick='game.newRound()'>Next Round</button>";
     }
 
 }
 
 
 
+var modal = {
+    id: document.getElementById("modal"),
+    rules: document.getElementById("rules"),
+    main: document.getElementById("main-body"),
+    fade: function() {
+        var opa = 1;
+        var timer = setInterval(function(){
+            if (opa <=0){
+                clearInterval(timer);
+                modal.id.style.display = "none";
+                modal.rules.display = "none";
+                modal.main.style.display = "block";
+                game.start();
+            } else {
+                opa = opa - 0.03;
+                modal.id.style.opacity = opa;
+                modal.rules.style.opacuty = opa;
+            }
+        }, 25)
+    }
+}
