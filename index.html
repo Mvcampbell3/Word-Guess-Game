@@ -4,40 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="assets/css/style.css">
     <title>Document</title>
-<style>
-    
-    h3{
-        margin: none;
-        padding: none;
-    }
 
-    .output{
-        display: flex;
-    }
-
-    .new{
-        margin: 5px;
-        border-bottom: 1px black solid;
-        padding: 5px;
-
-    }
-
-    .hidden{
-        opacity: 0;
-    }
-
-    .show{
-        opacity: 1;
-    }
-
-</style>
 </head>
 <body onkeyup="game.playerPress(event)" onload="game.start()">
 
+    <div class="rules"></div>
+
+    <header>
+        <h1 class="mainTitle">WORD GUESS GAME</h1>
+    </header>
+
+    
+    <div class="container">
+        <div class="chance" ><h3>Chances left: <span id="chancePlace">6</span></h3></div>
+
+        <div id="output" class="output"></div>
+
+        <div id="usedPlace" class="used"></div>
+    </div>
 
 
-    <div id="output" class="output"></div>
 
 
 
@@ -46,10 +34,7 @@
 
 
 
-
-
-
-    <script src="main.js"></script>
+    <script src="assets/js/main.js"></script>
     
 </body>
 </html>
