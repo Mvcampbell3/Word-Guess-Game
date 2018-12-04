@@ -1,4 +1,11 @@
 # Word-Guess-Game
+Commit 5
+
+Going with a Princess Bride theme for now, started bringing in some things for it.
+
+Need to figure out what I want the page to look like
+
+------------------------------------------------------
 Commit 4
 
 Beat the brakes off of the space issue, just decided to not be dumb and make new property in item

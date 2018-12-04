@@ -8,7 +8,7 @@
     <title>Document</title>
 
 </head>
-<body onkeyup="game.playerPress(event)">
+<body>
     <div id="modal" class="modal">
         <div id="rules" class="rules">
             <div class="inside">
@@ -52,13 +52,18 @@
             <div id="output" class="output"></div>
             <div id="nextRound"></div>
 
-            <div class="used">Letters Used: <br><snan id="usedPlace"></snan></div>
+            <div id="hideUsed" class="used">Letters Used: <br><snan id="usedPlace"></snan></div>
+            <h3 class="winStat">Wins: <span id="wins">0</span></h3>
+            <h3 class="lossStat">Losses: <span id="losses">0</span></h3>
     </div>
     </div>
 
 
 
-    <audio id="audiotag1" src="assets/sounds/MichaelBisping.wav" preload="auto"></audio>
+    <audio id="audiotag1" src="assets/sounds/fezzik.mp3" preload="auto"></audio>
+    <audio id="audiotag2" src="assets/sounds/vizzini.wav" preload="auto"></audio>
+    <audio id="audiotag3" src="assets/sounds/mlt.wav" preload="auto"></audio>
+
 
 
 
