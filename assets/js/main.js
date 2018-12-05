@@ -98,6 +98,17 @@ var game = {
         }
     },
 
+    playerPressTest: function (event) {
+
+        // For passing on the key pressed to game.checkGuess
+
+        document.onkeyup = function (event) {
+            game.guess = event.key;
+            console.log(game.guess + "from checkWord");
+            game.checkGuess();
+        }
+    },
+
     checkGuess: function () {
 
         // Top part for using enter key to move on to new round if finished word
@@ -163,7 +174,7 @@ var game = {
                 game.beforeNext();
             } else {
                 console.log("keep guessing");
-                game.playerPress();
+                game.playerPressTest();
             };
         } else {
             // Round over stuff
