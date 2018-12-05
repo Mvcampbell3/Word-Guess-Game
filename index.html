@@ -1,25 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy|Monoton|Permanent+Marker" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <title>Document</title>
 
 </head>
+
 <body>
     <div id="modal" class="modal">
         <div id="rules" class="rules">
             <div class="inside">
                 <div class="topSection">
-                    <h1 class="mainTitle center">WORD GUESS GAME</h1>
+                    <img src="assets/images/Title.png" alt="">
                 </div>
                 <div class="middleSection center">
                     <h2 class="sectionTitle">Rules and Infomation</h2>
                     <p class="rule">
                         Welcome to WORD GUESS GAME.
                     </p>
+                    <div id="startAudio" onclick="modal.sum()">Click Here First</div>
                     <p class="rule">
                         You will guess the letters in the hidden word by pressing the keys on the keyboard.
                     </p>
@@ -33,6 +37,7 @@
                         Make it through all of the words to win!
                     </p>
                     <p class="rule">Good Luck!</p>
+                    <audio id="themeAudio" src="assets/sounds/sumup.mp3" preload="auto"></audio>
                 </div>
                 <div class="bottomSection">
                     <div class="btn" id="closeModal" onclick="modal.fade()">Start Game</div>
@@ -42,27 +47,46 @@
     </div>
     <div id="main-body">
         <header>
-            <h1 class="mainTitle">WORD GUESS GAME</h1>
+            <img src="assets/images/Title.png" alt="">
         </header>
 
 
-        <div class="container center">
-            <div class="chance" ><h3>Chances left: <span id="chancePlace">6</span></h3></div>
+        <div id="container" class="container center">
 
-            <div id="output" class="output"></div>
-            <div id="nextRound"></div>
 
-            <div id="hideUsed" class="used">Letters Used: <br><snan id="usedPlace"></snan></div>
-            <h3 class="winStat">Wins: <span id="wins">0</span></h3>
-            <h3 class="lossStat">Losses: <span id="losses">0</span></h3>
+            <div class="game">
+                <div id="output" class="output"></div>
+                <div id="nextRound"></div>
+                <div class="stats">
+                    <h3 id="hideChance" class="stat">Chances left: <span id="chancePlace">6</span></h3>
+                    <h3 class="stat">Wins: <span id="wins">0</span></h3>
+                    <h3 class="stat">Losses: <span id="losses">0</span></h3>
+                    <h3 id="hideUsed" class="used">Letters Used: <br><span id="usedPlace"></span></h3>
+                </div>
+            </div>
+            <div id="gamePic" class="gamePic">
+
+            </div>
+
+
+
+
+        </div>
     </div>
-    </div>
 
 
+    <audio id="audiotagLost" src="assets/sounds/despair.mp3" preload="auto"></audio>
 
     <audio id="audiotag1" src="assets/sounds/fezzik.mp3" preload="auto"></audio>
     <audio id="audiotag2" src="assets/sounds/vizzini.wav" preload="auto"></audio>
     <audio id="audiotag3" src="assets/sounds/mlt.wav" preload="auto"></audio>
+    <audio id="audiotag4" src="assets/sounds/count.wav" preload="auto"></audio>
+    <audio id="audiotag5" src="assets/sounds/inigo.mp3" preload="auto"></audio>
+    <audio id="audiotag6" src="assets/sounds/humperdink.wav" preload="auto"></audio>
+    <audio id="audiotag7" src="assets/sounds/buttercup.wav" preload="auto"></audio>
+    <audio id="audiotag8" src="assets/sounds/westley.mp3" preload="auto"></audio>
+
+    
 
 
 
@@ -72,6 +96,7 @@
 
 
     <script src="assets/js/main.js"></script>
-    
+
 </body>
+
 </html>
