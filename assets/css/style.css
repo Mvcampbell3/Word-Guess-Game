@@ -18,34 +18,47 @@ h1, h2, h3, h4, h5, h6, p, ul{
 .modal{
     width: 100%;
     height: 100vh;
-    background-image: url("../images/ThePrincessBride.jpg");
-    /* background-color: black; */
+    background: linear-gradient(90deg, navy, deepskyblue, deepskyblue, navy);
+    /* background: linear-gradient(0deg, green, deepskyblue, rgb(15, 127, 165)); */
     background-size: contain;
     /* background-position: center; */
     background-repeat: space;
 }
 
 .rules{
-    width: 710px;
+    width: 800px;
     /* right: 10vw; */
-    left: calc(50vw - 356px);
-    background-color: black;
+    left: calc(50vw - 401px);
+    background-color: #222;
     color: white;
-    /* top: 10vh; */
+    top: 5vh;
     border: solid black 1px;
     position: absolute;
     z-index: 3;
-    padding: 10px;
+    padding: 5px;
+    font-family: "Monotron", cursive;
 }
 
 .rule{
     margin: 5px 0;
+    font-size: 18px;
 }
 
-#closeModal{
+.myBtn{
+    border: 1px white solid;
+    padding: 5px 8px;
     width: fit-content;
-    margin: auto;
+    margin: 10px auto;
     cursor: pointer;
+    font-family: "Monotron", cursive;
+    font-size: 20px;
+    box-shadow: 5px 5px 5px grey;
+    transition: box-shadow, .25s;
+}
+
+.myBtn:active{
+    box-shadow: none;
+    transition: all, .25s;
 }
 
 
@@ -57,7 +70,7 @@ header{
 }
 
 .container{
-    width: 90%;
+    width: 95%;
     height: 500px;
     display: grid;
     margin: auto;
@@ -70,14 +83,29 @@ header{
     height: 500px;
     background-size: contain;
     background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
 }
 
+.boxCover{
+    width: 100%;
+    height: 12.66%;
+    background-color: darkred;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-
-
+.insideBox{
+    color: white;
+    font-size: 18px;
+    font-family: 'Luckiest Guy', cursive;
+    opacity: 0;
+}
 
 .stat{
     margin-top: 1em;
+    color: #bbb;
 }
 
 #hideChance{
@@ -95,25 +123,32 @@ header{
 .output{
     display: flex;
     width: fit-content;
-    margin: 2em auto 0 auto;
-
+    margin: 1em auto 0 auto;
 }
+
+/* .output{
+    display: flex;
+    width: fit-content;
+    margin: 2em auto 0 auto;
+} */
 
 #between{
     font-size: 45px;
     margin-bottom: 1em;
     font-family: 'Permanent Marker', cursive;
-    color: #333;
+    color: #eee;
+    border-bottom: 1px #eee solid;
 }
 
 #press{
     margin-bottom: 1em;
-    font-family: 'Monoton', cursive;
+    font-family: 'Permanent Marker', cursive;
+    color: #bbb;
 }
 
 .new{
     margin: 5px;
-    border-bottom: 1px black solid;
+    border-bottom: 1px white solid;
     padding: 5px;
     min-width: 15px;
     font-family: 'Luckiest Guy', cursive;
@@ -128,6 +163,7 @@ header{
 .show{
     opacity: 1;
     text-transform: uppercase;
+    color: white;
     font-family: 'Luckiest Guy', cursive;
 
 }
@@ -146,14 +182,29 @@ header{
 .used{
     text-transform: uppercase;
     margin-top: 1em;
+    color: #bbb;
 }
 
 
 .huge{
     font-size: 70px;
     font-family: 'Luckiest Guy', cursive;
-
+    color: #bbb;
 }
+
 #main-body{
     display: none;
+}
+.main-body{
+    background-color: rgb(21, 28, 31);
+    height: 100vh;
+}
+
+.middleSection{
+    opacity: 0;
+}
+
+.middleSection2{
+    opacity: 1;
+    transition: all, .51s;
 }

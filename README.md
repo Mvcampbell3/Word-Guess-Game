@@ -1,4 +1,27 @@
 # Word-Guess-Game
+Version 7
+
+Added switch statement to color the boxes for health meter thing
+
+working on css style, not happy with landing modal
+
+Game works well though
+
+Need to make toLowerCase a thing
+
+----------------------------------------------------
+Commit 6
+
+Kind of fixed issue where onkeyup was messing with game over screen, 
+
+    apparently it continuosly runs so got rid of repeated calls for it and 
+
+    gated inside document.onkeyup to check if game is over.
+    
+    Sloppy fix, still trying to get cleaner one.
+
+
+----------------------------------------------------
 Commit 5
 
 Going with a Princess Bride theme for now, started bringing in some things for it.

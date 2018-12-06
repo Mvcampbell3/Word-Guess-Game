@@ -14,38 +14,34 @@
 <body>
     <div id="modal" class="modal">
         <div id="rules" class="rules">
-            <div class="inside">
+            <div class="inside center">
                 <div class="topSection">
                     <img src="assets/images/Title.png" alt="">
+                    <img src="assets/images/princessEdition.png" alt="">
+
+                    <div class="myBtn" id="startAudio" onclick="modal.sum()">Let Me Explain</div>
                 </div>
-                <div class="middleSection center">
-                    <h2 class="sectionTitle">Rules and Infomation</h2>
+                <div id="middleSection" class="middleSection center">
+                    <h2 class="sectionTitle">Welcome to Word Guess Game</h2>
+                    
                     <p class="rule">
-                        Welcome to WORD GUESS GAME.
-                    </p>
-                    <div id="startAudio" onclick="modal.sum()">Click Here First</div>
-                    <p class="rule">
-                        You will guess the letters in the hidden word by pressing the keys on the keyboard.
+                        You will guess the letters in the hidden word(s) by pressing the keys on the keyboard.
                     </p>
                     <p class="rule">
-                        You have 6 chances per word.
+                        You have 6 chances per round. If you lose all your chances, the round is over.
                     </p>
                     <p class="rule">
-                        If you lose all your chances, the game is over
+                        Your score is your unused chances over all 8 rounds.
                     </p>
-                    <p class="rule">
-                        Make it through all of the words to win!
-                    </p>
+                   
                     <p class="rule">Good Luck!</p>
                     <audio id="themeAudio" src="assets/sounds/sumup.mp3" preload="auto"></audio>
-                </div>
-                <div class="bottomSection">
-                    <div class="btn" id="closeModal" onclick="modal.fade()">Start Game</div>
+                    <div class="myBtn" id="closeModal" onclick="modal.fade()">Start Game</div>
                 </div>
             </div>
         </div>
     </div>
-    <div id="main-body">
+    <div id="main-body" class="main-body">
         <header>
             <img src="assets/images/Title.png" alt="">
         </header>
@@ -61,11 +57,17 @@
                     <h3 id="hideChance" class="stat">Chances left: <span id="chancePlace">6</span></h3>
                     <h3 class="stat">Wins: <span id="wins">0</span></h3>
                     <h3 class="stat">Losses: <span id="losses">0</span></h3>
+                    <h3 id="hideScore" class="stat">Your Score: <span id="scorePlace">0</span></h3>
                     <h3 id="hideUsed" class="used">Letters Used: <br><span id="usedPlace"></span></h3>
                 </div>
             </div>
             <div id="gamePic" class="gamePic">
-
+                <div class="boxCover" id="box1"><span id="inside1" class="insideBox">6 chances, looking good</span></div>
+                <div class="boxCover" id="box2"><span id="inside2" class="insideBox">5 chance, doing fine</span></div>
+                <div class="boxCover" id="box3"><span id="inside3" class="insideBox">4 chances, lets get serious now</span></div>
+                <div class="boxCover" id="box4"><span id="inside4" class="insideBox">3 chances, oh boy, getting nervous</span></div>
+                <div class="boxCover" id="box5"><span id="inside5" class="insideBox">2 chances, are you even trying?</span></div>
+                <div class="boxCover" id="box6"><span id="inside6" class="insideBox">1 chance left! I can't watch!</span></div>
             </div>
 
 

@@ -1,5 +1,5 @@
 // Constructor for new items in game
-function Item(name, noSpaces, audio, image, show) {
+function Item(name, noSpaces, audio, image) {
     this.name = name;
     this.letters = noSpaces.split("");
     this.audioID = audio;
@@ -20,8 +20,6 @@ var westley = new Item("dread pirate roberts", "dreadpirateroberts", "audiotag8"
 var gameArray = [fezzik, vizzini, max, count, inigo, humperdink, buttercup, westley];
 // var gameArray = [fezzik];
 
-
-
 // Game Object
 var game = {
     // variables used in game.methods
@@ -37,6 +35,12 @@ var game = {
     wins: 0,
     losses: 0,
     opacityBlack: 1,
+    done: false,
+    score: 0,
+    reallyDone: false,
+    boxes: ["box1", "box2", "box3", "box4", "box5", "box6"],
+    insideBox: ["inside1", "inside2", "inside3", "inside4", "inside5", "inside6"],
+    whichBox: 0,
     // output ids for HTML
     winsOut: document.getElementById("wins"),
     lossesOut: document.getElementById("losses"),
@@ -58,6 +62,12 @@ var game = {
             game.audio = gameArray[number].audioID;
             game.interactive = gameArray[number].name.split("");
             game.image = gameArray[number].imageID;
+            if (game.whichBox < game.insideBox.length){
+                document.getElementById(game.insideBox[game.whichBox]).style.opacity = 0;
+            };
+            game.whichBox = 0;
+            game.backBox();
+            document.getElementById(game.insideBox[0]).style.opacity = 1;
             gameArray.splice(number, 1);
             console.log(game.correct);
             console.log(number + " index of array in gameArray set");
@@ -70,11 +80,17 @@ var game = {
                     game.output.innerHTML += "<div class='new'><h3 class='hidden'>" + game.interactive[i] + "</h3></div>";
                 } else {
                     game.output.innerHTML += "<div class='space'></div>";
+                    // game.output.innerHTML += "<br>";
                 }
             };
 
+            for (var o = 0; o < game.boxes.length; o++){
+                document.getElementById(game.boxes[o]).style.opacity = 1;
+            }
+
             // run event listener
             game.playerPress();
+
 
         } else {
             // Game Over Stuff
@@ -84,29 +100,24 @@ var game = {
             document.getElementById("hideChance").style.display = "none";
             document.getElementById("container").style.display = "block";
             document.getElementById("gamePic").style.display = "none";
+            game.done = true;
+            game.reallyDone = true;
         }
     },
 
     playerPress: function (event) {
-
+        console.log(game.done + " before if ran");
         // For passing on the key pressed to game.checkGuess
-
         document.onkeyup = function (event) {
-            game.guess = event.key;
-            console.log(game.guess);
-            game.checkGuess();
+            if (game.done === false) {
+                game.guess = event.key;
+                console.log("game.done (should be false)= " + game.done);
+                game.checkGuess();
+            } else {
+                console.log("The game is really over");
+            }
         }
-    },
 
-    playerPressTest: function (event) {
-
-        // For passing on the key pressed to game.checkGuess
-
-        document.onkeyup = function (event) {
-            game.guess = event.key;
-            console.log(game.guess + "from checkWord");
-            game.checkGuess();
-        }
     },
 
     checkGuess: function () {
@@ -151,6 +162,13 @@ var game = {
                 game.usedPlace.textContent = game.used;
                 if (!game.tripped) {
                     game.chances--;
+                    document.getElementById(game.boxes[game.whichBox]).style.opacity = 0;
+                    document.getElementById(game.insideBox[game.whichBox]).style.opacity = 0;
+                    game.whichBox++;
+                    game.backBox();
+                    if (game.whichBox < game.insideBox.length) {
+                        document.getElementById(game.insideBox[game.whichBox]).style.opacity = 1;
+                    };
                     game.chancePlace.textContent = game.chances;
                 } else {
                     // Was right before so need to reset the trip
@@ -170,17 +188,25 @@ var game = {
                 document.getElementById(game.audio).play();
                 game.wins++;
                 game.winsOut.textContent = game.wins;
-                game.picPlace.style.backgroundImage = "url("+game.image+")";
+                for (var l = 0; l < game.boxes.length; l++){
+                    document.getElementById(game.boxes[l]).style.opacity = 0;
+                }
+                game.picPlace.style.backgroundImage = "url(" + game.image + ")";
+                game.done = true;
                 game.beforeNext();
             } else {
                 console.log("keep guessing");
-                game.playerPressTest();
             };
         } else {
             // Round over stuff
             game.losses++
             document.getElementById("audiotagLost").play();
+            game.picPlace.style.backgroundImage = "url(assets/images/machinedraw.png)";
+            for (var l = 0; l < game.boxes.length; l++){
+                document.getElementById(game.boxes[l]).style.opacity = 0;
+            };
             game.lossesOut.textContent = game.losses;
+            game.done = true;
             game.beforeNext();
         }
     },
@@ -196,7 +222,9 @@ var game = {
         game.nextRound.innerHTML = "";
         game.picPlace.style.backgroundImage = "";
         document.getElementById(game.audio).pause();
+        document.getElementById("audiotagLost").pause();
         game.audio = "";
+        game.done = false;
         game.start();
     },
     // Pause before newRound is run if you are right. Displays the word and waits for enter key to be pressed through game.checkGuess
@@ -204,16 +232,69 @@ var game = {
         game.output.innerHTML = "<h3 id='between'>" + game.active.name.toUpperCase() + "</h3>";
         game.nextRound.innerHTML = "<h2 id='press'>Press Enter to continue</h2>";
         document.getElementById("hideUsed").style.display = "none";
+        game.score += game.chances;
+        document.getElementById("scorePlace").textContent = game.score;
+        document.onkeyup = function(event) {
+            if (event.key === "Enter" && game.reallyDone === false){
+                game.newRound();
+                console.log(event.key + " this is from beforenext");
+            }
+        }
+    },
+    backBox: function(){
+        switch (game.whichBox) {
+            case 0:
+                for (var t = 0; t < game.boxes.length; t++){
+                    document.getElementById(game.boxes[t]).style.backgroundColor = "green";
+                }
+                console.log(game.whichBox);
+                break;
+            case 1:
+                for (var t = 0; t < game.boxes.length; t++){
+                    document.getElementById(game.boxes[t]).style.backgroundColor = "yellowgreen";
+                }
+                console.log(game.whichBox);
+                break;
+            case 2:
+                for (var t = 0; t < game.boxes.length; t++){
+                    document.getElementById(game.boxes[t]).style.backgroundColor = "orange";
+                }
+                console.log(game.whichBox);
+                break;
+            case 3:
+                for (var t = 0; t < game.boxes.length; t++){
+                    document.getElementById(game.boxes[t]).style.backgroundColor = "orangered";
+                }
+                console.log(game.whichBox);
+                break;
+            case 4:
+                for (var t = 0; t < game.boxes.length; t++){
+                    document.getElementById(game.boxes[t]).style.backgroundColor = "red";
+                }
+                console.log(game.whichBox);
+                break;
+            case 5:
+                for (var t = 0; t < game.boxes.length; t++){
+                    document.getElementById(game.boxes[t]).style.backgroundColor = "black";
+                }
+                console.log(game.whichBox);
+                break;
+            default:
+            for (var t = 0; t < game.boxes.length; t++){
+                document.getElementById(game.boxes[t]).style.backgroundColor = "purple";
+            }
+            console.log(game.whichBox);
+        }
     }
 
 }
 
-
-
 var modal = {
-    sum: function(){
+    sum: function () {
         document.getElementById("themeAudio").play();
         console.log("playing start audio");
+        document.getElementById("middleSection").className = "middleSecion2";
+        document.getElementById("startAudio").style.opacity = 0;
     },
     id: document.getElementById("modal"),
     rules: document.getElementById("rules"),
@@ -226,6 +307,7 @@ var modal = {
                 modal.id.style.display = "none";
                 modal.rules.display = "none";
                 modal.main.style.display = "block";
+                document.getElementById("themeAudio").pause();
                 game.start();
             } else {
                 opa = opa - 0.03;
