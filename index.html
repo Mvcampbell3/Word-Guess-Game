@@ -13,13 +13,14 @@
 
 <body>
     <div id="modal" class="modal">
+
+        <div class="myBtn zhigh" id="startAudio" onmouseup="modal.sum()">Let Me Explain</div>
+        <div class="myBtn myBtn-hidden" id="sumUp">Let Me Sum Up</div>
+
         <div id="rules" class="rules">
             <div class="inside center">
-                <div class="topSection">
-                    <img src="assets/images/Title.png" alt="">
-                    <img src="assets/images/princessEdition.png" alt="">
-
-                    <div class="myBtn" id="startAudio" onclick="modal.sum()">Let Me Explain</div>
+                <div class="topsection">
+                    
                 </div>
                 <div id="middleSection" class="middleSection center">
                     <h2 class="sectionTitle">Welcome to Word Guess Game</h2>
@@ -36,15 +37,13 @@
                    
                     <p class="rule">Good Luck!</p>
                     <audio id="themeAudio" src="assets/sounds/sumup.mp3" preload="auto"></audio>
-                    <div class="myBtn" id="closeModal" onclick="modal.fade()">Start Game</div>
+                    <div class="myBtn2" id="closeModal" onmouseup="modal.fade()">Start Game</div>
                 </div>
             </div>
         </div>
     </div>
     <div id="main-body" class="main-body">
-        <header>
-            <img src="assets/images/Title.png" alt="">
-        </header>
+        
 
 
         <div id="container" class="container center">

@@ -294,7 +294,8 @@ var modal = {
         document.getElementById("themeAudio").play();
         console.log("playing start audio");
         document.getElementById("middleSection").className = "middleSecion2";
-        document.getElementById("startAudio").style.opacity = 0;
+        document.getElementById("startAudio").className = "myBtn myBtn-animate";
+        document.getElementById("sumUp").className = "myBtn myBtn-reAnimate";
     },
     id: document.getElementById("modal"),
     rules: document.getElementById("rules"),
