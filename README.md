@@ -1,4 +1,13 @@
 # Word-Guess-Game
+Version 8
+
+Basically finished, will probably be spending the rest of time until it is due tinkering, breaking, then fixing things
+
+Added to the modal object, making it the game over screen;
+
+Worked on the styling to get the animations working
+
+----------------------------------------------------
 Version 7
 
 Added switch statement to color the boxes for health meter thing
@@ -10,7 +19,7 @@ Game works well though
 Need to make toLowerCase a thing
 
 ----------------------------------------------------
-Commit 6
+Version 6
 
 Kind of fixed issue where onkeyup was messing with game over screen, 
 
@@ -22,14 +31,14 @@ Kind of fixed issue where onkeyup was messing with game over screen,
 
 
 ----------------------------------------------------
-Commit 5
+Version 5
 
 Going with a Princess Bride theme for now, started bringing in some things for it.
 
 Need to figure out what I want the page to look like
 
 ------------------------------------------------------
-Commit 4
+Version 4
 
 Beat the brakes off of the space issue, just decided to not be dumb and make new property in item
 
@@ -39,7 +48,7 @@ audio clips will now play after the word is correctly spelled. don't know about 
     before audio ends. testing coming.
 
 --------------------------------------------------------
-Commit 3
+Version 3
 
 Added a modal that gives rules and has start button
 
@@ -49,7 +58,7 @@ I am going to have the modal block out everything, page below will have the them
     only thing to transfer over will be the h1.mainTitle
     
 ---------------------------------------------------------
-Commit2
+Version 2
 
 The spaces in arrays are evil. For now, I am focusing on single word items
 
@@ -61,7 +70,7 @@ added assets folder with css/js/images/sounds dirs and moved things around for p
 Begining to work on css and html, js works pretty well. DON'T USE SPACES!
 
 -----------------------------------------------------------
-Commit1
+Version 1
 
 Added the two files that I have been working on.
 

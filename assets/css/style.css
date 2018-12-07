@@ -17,37 +17,68 @@ h1, h2, h3, h4, h5, h6, p, ul{
 
 /* Modal Section */
 
-.modal{
+/* .modal{
     width: 100%;
     height: 100vh;
-    /* background: linear-gradient(90deg, navy, deepskyblue, deepskyblue, navy); */
-    /* background-image: url("../images/PBdesk1.jpg"); */
-    /* background-image: url("../images/PBdesk2.jpg"); */
-    /* background-image: url("../images/PBdesk3.jpg"); */
-    /* background-image: url("../images/PBdesk4.jpeg"); */
     background-image: url("../images/princessBrideBack.png");
     background-size: contain;
-    /* background-size: cover; */
     background-position: center;
     background-color: rgb(2, 3, 15);
     background-repeat: no-repeat;
+    opacity: 1;
+} */
+
+.modal{
+    height: 100vh;
+    width: 80%;
+    margin: auto;
+    background-color: #37413B;
+    opacity: 1;
+}
+
+.fadeOutA{
+    animation-name: fadeOut;
+    animation-duration: 1.5s;
+    animation-fill-mode: forwards;
+}
+
+.gone{
+    display: none;
+}
+
+.fadeInA{
+    animation-name: fadeIn;
+    animation-duration: 1.2s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeOut{
+    0%{opacity: 1;}
+    100%{opacity: 0; visibility: hidden;}
+}
+
+@keyframes fadeIn{
+    0%{opacity: 0; visibility: visible;}
+    100%{opacity: 1}
 }
 
 .rules{
-    width: 800px;
-    background-color: #343434;
+    width: 900px;
+    background-color: #37413B;
     color: white;
     z-index: 3;
-    position: relative;
-    top: 300px;
-    left: calc(50vw - 400px);
     font-family: "Monotron", cursive;
+    margin: auto;
+    padding-top: 1em;
 }
-
 
 .rule{
     margin: 5px 0;
-    font-size: 18px;
+    font-size: 20px;
+}
+
+.buttonArea{
+    position: relative;
 }
 
 .myBtn{
@@ -57,13 +88,13 @@ h1, h2, h3, h4, h5, h6, p, ul{
     cursor: pointer;
     font-family: "Monotron", cursive;
     font-size: 20px;
-    box-shadow: 5px 5px 5px grey;
+    box-shadow: 5px 5px 5px black;
     transition: box-shadow, .25s;
-    position: relative;
-    top: 300px;
-    background-color: #343434;
+    position: absolute;
+    background-color: #37413B;
     z-index: 5;
-    left: calc(50vw - 108px);
+    top: 240px;
+    left: calc(50% - 108px);
     text-align: center;
     color: white;
 }
@@ -75,13 +106,8 @@ h1, h2, h3, h4, h5, h6, p, ul{
     margin: 20px auto;
     font-family: "Monotron", cursive;
     font-size: 20px;
-    box-shadow: 5px 5px 5px grey;
+    box-shadow: 5px 5px 5px black;
     transition: box-shadow, .25s;
-
-}
-
-.zhigh{
-    z-index: 1000;
 }
 
 .myBtn:active{
@@ -98,17 +124,19 @@ h1, h2, h3, h4, h5, h6, p, ul{
 .myBtn-animate{
     animation-name: fall;
     animation-duration: 3s;
-    animation-delay: 2.8s;
+    animation-delay: 2.6s;
     animation-fill-mode: forwards;
 }
 
 @keyframes fall{
-    0%{top: 300px;}
+    0%{top: 240px;}
     100%{top: 1500px; display: none;}
 }
 
 .myBtn-hidden{
-    display: none;
+    top: 1500px;
+    height: 0px;
+    visibility: hidden;
 }
 
 .myBtn-reAnimate{
@@ -116,17 +144,43 @@ h1, h2, h3, h4, h5, h6, p, ul{
     box-shadow: none;
     animation-name: rise;
     animation-duration: 2.5s;
-    animation-delay: 3s;
+    animation-delay: 2.6s;
     animation-fill-mode: forwards;
 
 }
 
 @keyframes rise{
-    0%{top: 1500px; display: none;}
-    50%{display: block;}
-    100%{top: 262px;}
+    0%{top: 1500px;}
+    100%{top: 240px;}
 }
 
+.gameOver{
+    visibility: hidden;
+}
+
+.gameOver2{
+    visibility: visible;
+    font-family: 'Anton', sans-serif;
+    /* font-family: 'Luckiest Guy', cursive; */
+    color: #eee;
+    font-size: 25px;
+    padding-top: 1em;
+    width: 900px;
+    margin: auto;
+}
+
+.gameOverHeading{
+    font-size: 100px;
+    font-family: 'Anton', sans-serif;
+}
+
+.middleSection{
+    opacity: 0;
+}
+
+.middleSection2{
+    padding-top: 4em;
+}
 
 /* ------------- */
 
@@ -139,17 +193,13 @@ header{
     width: 95%;
     height: 500px;
     display: grid;
-    margin: auto;
+    margin: 2em auto;
     grid-template-columns: 1fr 1fr;
-    /* align-items: center; */
 }
 
-.game{
-    margin-top: 5em;
-}
+
 
 .gamePic{
-    margin-top: 5em;
     width: 95%;
     height: 500px;
     border: 1px #bbb solid;
@@ -179,7 +229,8 @@ header{
 }
 
 .stat{
-    margin-top: 1em;
+    margin-bottom: 1em;
+    font-family: 'Luckiest Guy', cursive;
     color: #bbb;
 }
 
@@ -201,12 +252,6 @@ header{
     margin: 1em auto 0 auto;
 }
 
-/* .output{
-    display: flex;
-    width: fit-content;
-    margin: 2em auto 0 auto;
-} */
-
 #between{
     font-size: 45px;
     margin-bottom: 1em;
@@ -227,7 +272,6 @@ header{
     padding: 5px;
     min-width: 15px;
     font-family: 'Luckiest Guy', cursive;
-
 }
 
 .hidden{
@@ -251,12 +295,12 @@ header{
 
 .stats{
     margin-top: 1em;
-    font-family: 'Luckiest Guy', cursive;
 }
 
 .used{
     text-transform: uppercase;
     margin-top: 1em;
+    font-family: 'Luckiest Guy', cursive;
     color: #bbb;
 }
 
@@ -267,22 +311,15 @@ header{
     color: #bbb;
 }
 
-#main-body{
+.main-bodyHide{
     display: none;
 }
-.main-body{
+
+.main-bodyShow{
     background-color: rgb(21, 28, 31);
     height: 100vh;
+    display: block;
+    z-index: 500;
+
 }
 
-.middleSection{
-    opacity: 0;
-    top: 3em;
-}
-
-.middleSection2{
-    opacity: 1;
-    transition: all, .51s;
-    top: 3em;
-    position: static;
-}

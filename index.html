@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy|Monoton|Permanent+Marker" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy|Monoton|Anton|Permanent+Marker" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <title>Document</title>
 
@@ -13,18 +13,20 @@
 
 <body>
     <div id="modal" class="modal">
-
-        <div class="myBtn zhigh" id="startAudio" onmouseup="modal.sum()">Let Me Explain</div>
-        <div class="myBtn myBtn-hidden" id="sumUp">Let Me Sum Up</div>
-
+        <div id="buttonArea">
+            <div class="myBtn zhigh" id="startAudio" onmouseup="modal.sum()">Let Me Explain</div>
+            <div class="myBtn myBtn-hidden" id="sumUp">Let Me Sum Up</div>
+        </div>
         <div id="rules" class="rules">
             <div class="inside center">
                 <div class="topsection">
-                    
+                    <img src="assets/images/logo2.png" alt="">
+                    <img src="assets/images/logo3.png" alt="" style="width: 80%; height: auto;">
+                    <!-- <img src="assets/images/logo3.png" alt=""> -->
                 </div>
                 <div id="middleSection" class="middleSection center">
                     <h2 class="sectionTitle">Welcome to Word Guess Game</h2>
-                    
+
                     <p class="rule">
                         You will guess the letters in the hidden word(s) by pressing the keys on the keyboard.
                     </p>
@@ -34,16 +36,24 @@
                     <p class="rule">
                         Your score is your unused chances over all 8 rounds.
                     </p>
-                   
+
                     <p class="rule">Good Luck!</p>
                     <audio id="themeAudio" src="assets/sounds/sumup.mp3" preload="auto"></audio>
-                    <div class="myBtn2" id="closeModal" onmouseup="modal.fade()">Start Game</div>
+                    <div class="myBtn2" id="closeModal">Start Game</div>
                 </div>
             </div>
         </div>
+        <div class="gameOver" id="gameOver">
+            <img src="assets/images/logo2.png" alt="">
+            <img src="assets/images/logo3.png" alt="" style="width: 80%; height: auto;">
+            <h2 class="gameOverHeading">Game Over!</h2>
+            <h3 id="hideScoreOver" class="gameOverStat">Your Score: <span id="scorePlaceOver">0</span></h3>
+            <h3 class="gameOverStat">Wins: <span id="winsOver">0</span></h3>
+            <h3 class="gameOverStat">Losses: <span id="lossesOver">0</span></h3>
+        </div>
     </div>
-    <div id="main-body" class="main-body">
-        
+    <div id="main-body" class="main-bodyShow">
+
 
 
         <div id="container" class="container center">
@@ -87,7 +97,7 @@
     <audio id="audiotag7" src="assets/sounds/buttercup.wav" preload="auto"></audio>
     <audio id="audiotag8" src="assets/sounds/westley.mp3" preload="auto"></audio>
 
-    
+
 
 
 

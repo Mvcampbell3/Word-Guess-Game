@@ -62,7 +62,7 @@ var game = {
             game.audio = gameArray[number].audioID;
             game.interactive = gameArray[number].name.split("");
             game.image = gameArray[number].imageID;
-            if (game.whichBox < game.insideBox.length){
+            if (game.whichBox < game.insideBox.length) {
                 document.getElementById(game.insideBox[game.whichBox]).style.opacity = 0;
             };
             game.whichBox = 0;
@@ -84,7 +84,7 @@ var game = {
                 }
             };
 
-            for (var o = 0; o < game.boxes.length; o++){
+            for (var o = 0; o < game.boxes.length; o++) {
                 document.getElementById(game.boxes[o]).style.opacity = 1;
             }
 
@@ -95,13 +95,21 @@ var game = {
         } else {
             // Game Over Stuff
             console.log("out of arrays")
-            game.output.innerHTML = "<h1 class='huge'>Game Is Over!!</h1>";
-            document.getElementById("hideUsed").style.display = "none";
-            document.getElementById("hideChance").style.display = "none";
-            document.getElementById("container").style.display = "block";
-            document.getElementById("gamePic").style.display = "none";
-            game.done = true;
-            game.reallyDone = true;
+            // game.output.innerHTML = "<h1 class='huge'>Game Is Over!!</h1>";
+            // document.getElementById("hideUsed").style.display = "none";
+            // document.getElementById("hideChance").style.display = "none";
+            // document.getElementById("container").style.display = "block";
+            // document.getElementById("gamePic").style.display = "none";
+            // document.getElementById("winsOver").textContent = game.wins;
+            // document.getElementById("lossesOver").textContent = game.losses;
+            // document.getElementById("scorePlaceOver").textContent = game.score;
+            // document.getElementById("gameOver").className = "gameOver2 center";
+            // document.getElementById("modal").className = "modal fadeInA";
+            // document.getElementById("rules").className = "gone";
+            // document.getElementById("buttonArea").className = "gone";
+            // game.done = true;
+            // game.reallyDone = true;
+            game.gameOverRun();
         }
     },
 
@@ -110,7 +118,7 @@ var game = {
         // For passing on the key pressed to game.checkGuess
         document.onkeyup = function (event) {
             if (game.done === false) {
-                game.guess = event.key;
+                game.guess = event.key.toLowerCase();
                 console.log("game.done (should be false)= " + game.done);
                 game.checkGuess();
             } else {
@@ -128,7 +136,7 @@ var game = {
             game.newRound();
         } else if (game.guess == "Enter" && game.correct.length > 0) {
             console.log("enter pressed and have not finished word");
-            game.newRound();
+            // game.newRound();
         } else {
 
             // This is magic the likes of which I have not seen nor can I attempt to explain
@@ -188,7 +196,7 @@ var game = {
                 document.getElementById(game.audio).play();
                 game.wins++;
                 game.winsOut.textContent = game.wins;
-                for (var l = 0; l < game.boxes.length; l++){
+                for (var l = 0; l < game.boxes.length; l++) {
                     document.getElementById(game.boxes[l]).style.opacity = 0;
                 }
                 game.picPlace.style.backgroundImage = "url(" + game.image + ")";
@@ -202,7 +210,7 @@ var game = {
             game.losses++
             document.getElementById("audiotagLost").play();
             game.picPlace.style.backgroundImage = "url(assets/images/machinedraw.png)";
-            for (var l = 0; l < game.boxes.length; l++){
+            for (var l = 0; l < game.boxes.length; l++) {
                 document.getElementById(game.boxes[l]).style.opacity = 0;
             };
             game.lossesOut.textContent = game.losses;
@@ -234,58 +242,74 @@ var game = {
         document.getElementById("hideUsed").style.display = "none";
         game.score += game.chances;
         document.getElementById("scorePlace").textContent = game.score;
-        document.onkeyup = function(event) {
-            if (event.key === "Enter" && game.reallyDone === false){
+        document.onkeyup = function (event) {
+            if (event.key === "Enter" && game.reallyDone === false) {
                 game.newRound();
                 console.log(event.key + " this is from beforenext");
             }
         }
     },
-    backBox: function(){
+    backBox: function () {
         switch (game.whichBox) {
             case 0:
-                for (var t = 0; t < game.boxes.length; t++){
+                for (var t = 0; t < game.boxes.length; t++) {
                     document.getElementById(game.boxes[t]).style.backgroundColor = "green";
                 }
                 console.log(game.whichBox);
                 break;
             case 1:
-                for (var t = 0; t < game.boxes.length; t++){
+                for (var t = 0; t < game.boxes.length; t++) {
                     document.getElementById(game.boxes[t]).style.backgroundColor = "yellowgreen";
                 }
                 console.log(game.whichBox);
                 break;
             case 2:
-                for (var t = 0; t < game.boxes.length; t++){
+                for (var t = 0; t < game.boxes.length; t++) {
                     document.getElementById(game.boxes[t]).style.backgroundColor = "orange";
                 }
                 console.log(game.whichBox);
                 break;
             case 3:
-                for (var t = 0; t < game.boxes.length; t++){
+                for (var t = 0; t < game.boxes.length; t++) {
                     document.getElementById(game.boxes[t]).style.backgroundColor = "orangered";
                 }
                 console.log(game.whichBox);
                 break;
             case 4:
-                for (var t = 0; t < game.boxes.length; t++){
+                for (var t = 0; t < game.boxes.length; t++) {
                     document.getElementById(game.boxes[t]).style.backgroundColor = "red";
                 }
                 console.log(game.whichBox);
                 break;
             case 5:
-                for (var t = 0; t < game.boxes.length; t++){
+                for (var t = 0; t < game.boxes.length; t++) {
                     document.getElementById(game.boxes[t]).style.backgroundColor = "black";
                 }
                 console.log(game.whichBox);
                 break;
             default:
-            for (var t = 0; t < game.boxes.length; t++){
-                document.getElementById(game.boxes[t]).style.backgroundColor = "purple";
-            }
-            console.log(game.whichBox);
+                for (var t = 0; t < game.boxes.length; t++) {
+                    document.getElementById(game.boxes[t]).style.backgroundColor = "purple";
+                }
+                console.log(game.whichBox);
         }
-    }
+    },
+    
+    gameOverRun: function () {
+        document.getElementById("hideUsed").style.display = "none";
+        document.getElementById("hideChance").style.display = "none";
+        document.getElementById("container").style.display = "block";
+        document.getElementById("gamePic").style.display = "none";
+        document.getElementById("winsOver").textContent = game.wins;
+        document.getElementById("lossesOver").textContent = game.losses;
+        document.getElementById("scorePlaceOver").textContent = game.score;
+        document.getElementById("gameOver").className = "gameOver2 center";
+        document.getElementById("modal").className = "modal fadeInA";
+        document.getElementById("rules").className = "gone";
+        document.getElementById("buttonArea").className = "gone";
+        game.done = true;
+        game.reallyDone = true;
+    },
 
 }
 
@@ -293,31 +317,29 @@ var modal = {
     sum: function () {
         document.getElementById("themeAudio").play();
         console.log("playing start audio");
-        document.getElementById("middleSection").className = "middleSecion2";
+        document.getElementById("middleSection").className = "middleSection2 fadeInA";
         document.getElementById("startAudio").className = "myBtn myBtn-animate";
         document.getElementById("sumUp").className = "myBtn myBtn-reAnimate";
     },
     id: document.getElementById("modal"),
     rules: document.getElementById("rules"),
     main: document.getElementById("main-body"),
-    fade: function () {
-        var opa = 1;
-        var timer = setInterval(function () {
-            if (opa <= 0) {
-                clearInterval(timer);
-                modal.id.style.display = "none";
-                modal.rules.display = "none";
-                modal.main.style.display = "block";
-                document.getElementById("themeAudio").pause();
-                game.start();
-            } else {
-                opa = opa - 0.03;
-                modal.id.style.opacity = opa;
-                modal.rules.style.opacuty = opa;
-            }
-        }, 25)
+    fadeOut: function () {
+        document.getElementById("closeModal").removeEventListener("mouseup", modal.fadeOut);
+        modal.id.className = "modal fadeOutA";
+        // modal.rules.className = "rules fadeOutA";
+        document.getElementById("themeAudio").pause();
+        console.log("fading");
+        setTimeout(function () {
+            modal.id.className = "gone";
+            console.log("display none now");
+        }, 1500);
+        game.start();
+    },
+    fadeBack: function () {
+        modal.id.className = "modal fadeInA";
+        modal.rules.className = "gone";
     }
-}
+};
 
-
-
+document.getElementById("closeModal").addEventListener("mouseup", modal.fadeOut);
