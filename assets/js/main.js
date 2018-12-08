@@ -18,7 +18,7 @@ var westley = new Item("dread pirate roberts", "dreadpirateroberts", "audiotag8"
 
 // Array that holds the new Items
 var gameArray = [fezzik, vizzini, max, count, inigo, humperdink, buttercup, westley];
-// var gameArray = [fezzik];
+var checkIsLetter = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
 // Game Object
 var game = {
@@ -49,8 +49,8 @@ var game = {
     usedPlace: document.getElementById("usedPlace"),
     nextRound: document.getElementById("nextRound"),
     picPlace: document.getElementById("gamePic"),
-    // methods used to run the game
 
+    // methods used to run the game
     start: function () {
         if (gameArray.length > 0) {
             // Pick an Array
@@ -62,6 +62,7 @@ var game = {
             game.audio = gameArray[number].audioID;
             game.interactive = gameArray[number].name.split("");
             game.image = gameArray[number].imageID;
+            // reset the boxes for the health meter and their text opacity
             if (game.whichBox < game.insideBox.length) {
                 document.getElementById(game.insideBox[game.whichBox]).style.opacity = 0;
             };
@@ -80,7 +81,6 @@ var game = {
                     game.output.innerHTML += "<div class='new'><h3 class='hidden'>" + game.interactive[i] + "</h3></div>";
                 } else {
                     game.output.innerHTML += "<div class='space'></div>";
-                    // game.output.innerHTML += "<br>";
                 }
             };
 
@@ -95,20 +95,6 @@ var game = {
         } else {
             // Game Over Stuff
             console.log("out of arrays")
-            // game.output.innerHTML = "<h1 class='huge'>Game Is Over!!</h1>";
-            // document.getElementById("hideUsed").style.display = "none";
-            // document.getElementById("hideChance").style.display = "none";
-            // document.getElementById("container").style.display = "block";
-            // document.getElementById("gamePic").style.display = "none";
-            // document.getElementById("winsOver").textContent = game.wins;
-            // document.getElementById("lossesOver").textContent = game.losses;
-            // document.getElementById("scorePlaceOver").textContent = game.score;
-            // document.getElementById("gameOver").className = "gameOver2 center";
-            // document.getElementById("modal").className = "modal fadeInA";
-            // document.getElementById("rules").className = "gone";
-            // document.getElementById("buttonArea").className = "gone";
-            // game.done = true;
-            // game.reallyDone = true;
             game.gameOverRun();
         }
     },
@@ -117,12 +103,13 @@ var game = {
         console.log(game.done + " before if ran");
         // For passing on the key pressed to game.checkGuess
         document.onkeyup = function (event) {
-            if (game.done === false) {
+            if (game.done === false && checkIsLetter.indexOf(event.key) != -1) {
                 game.guess = event.key.toLowerCase();
                 console.log("game.done (should be false)= " + game.done);
                 game.checkGuess();
             } else {
                 console.log("The game is really over");
+                // keeps only letters being entered and stops from running while in between words
             }
         }
 
@@ -136,24 +123,18 @@ var game = {
             game.newRound();
         } else if (game.guess == "Enter" && game.correct.length > 0) {
             console.log("enter pressed and have not finished word");
-            // game.newRound();
         } else {
-
-            // This is magic the likes of which I have not seen nor can I attempt to explain
-            // I wanted to be able to make the NodeList into a real Array
-            // This was what google brought me to, I call him the pinocchio move
+            // taking the nodeList that queryselectorall returns and making it a real array
             var hiddenAll = Array.prototype.slice.call(document.querySelectorAll(".hidden"));
-            // Back to what I know how to do
 
             // Check to see if guess is correct, run through until all letters in array that match guess are gone
             if (this.correct.indexOf(game.guess) != -1) {
-
                 console.log(this.correct.indexOf(game.guess));
-
+                // make correct letters visiable, the vana-white move
                 hiddenAll[this.correct.indexOf(game.guess)].className = "show";
-
+                // removes from correct array
                 this.correct.splice(this.correct.indexOf(game.guess), 1);
-
+                // lets the function know if a letter was ever part of correct array
                 game.tripped = true;
 
                 this.checkGuess();
@@ -169,11 +150,14 @@ var game = {
                 game.used.push(game.guess);
                 game.usedPlace.textContent = game.used;
                 if (!game.tripped) {
+                    // penalties for wrong guess
                     game.chances--;
                     document.getElementById(game.boxes[game.whichBox]).style.opacity = 0;
                     document.getElementById(game.insideBox[game.whichBox]).style.opacity = 0;
                     game.whichBox++;
                     game.backBox();
+                    // gates the higher end of how many boxes are called in inside boxese
+                    // if index higher than length, bad times
                     if (game.whichBox < game.insideBox.length) {
                         document.getElementById(game.insideBox[game.whichBox]).style.opacity = 1;
                     };
@@ -249,6 +233,7 @@ var game = {
             }
         }
     },
+    // setting color of health bar
     backBox: function () {
         switch (game.whichBox) {
             case 0:
@@ -294,7 +279,7 @@ var game = {
                 console.log(game.whichBox);
         }
     },
-    
+    // rearranging the page for end game screen and picking audio based on number of correct words
     gameOverRun: function () {
         document.getElementById("hideUsed").style.display = "none";
         document.getElementById("hideChance").style.display = "none";
@@ -309,6 +294,17 @@ var game = {
         document.getElementById("buttonArea").className = "gone";
         game.done = true;
         game.reallyDone = true;
+        console.log("game wins = " + game.wins);
+        if (game.wins >= 7){
+            document.getElementById("greatWins").play()
+        } else if (game.wins == 6 || game.wins == 5) {
+            document.getElementById("goodWins").play()
+        } else if (game.wins ==4 || game.wins ==3) {
+            document.getElementById("badWins").play()
+        } else {
+            document.getElementById("inconceivable").play()
+
+        }
     },
 
 }
@@ -327,7 +323,6 @@ var modal = {
     fadeOut: function () {
         document.getElementById("closeModal").removeEventListener("mouseup", modal.fadeOut);
         modal.id.className = "modal fadeOutA";
-        // modal.rules.className = "rules fadeOutA";
         document.getElementById("themeAudio").pause();
         console.log("fading");
         setTimeout(function () {

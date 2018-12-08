@@ -5,9 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="assets/images/wordguessfavicon.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy|Monoton|Anton|Permanent+Marker" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
-    <title>Document</title>
+    <title>Word-Guess-Game</title>
 
 </head>
 
@@ -22,7 +23,6 @@
                 <div class="topsection">
                     <img src="assets/images/logo2.png" alt="">
                     <img src="assets/images/logo3.png" alt="" style="width: 80%; height: auto;">
-                    <!-- <img src="assets/images/logo3.png" alt=""> -->
                 </div>
                 <div id="middleSection" class="middleSection center">
                     <h2 class="sectionTitle">Welcome to Word Guess Game</h2>
@@ -85,9 +85,9 @@
         </div>
     </div>
 
-
+    <!-- losing round audio -->
     <audio id="audiotagLost" src="assets/sounds/despair.mp3" preload="auto"></audio>
-
+    <!-- correct round audio -->
     <audio id="audiotag1" src="assets/sounds/fezzik.mp3" preload="auto"></audio>
     <audio id="audiotag2" src="assets/sounds/vizzini.wav" preload="auto"></audio>
     <audio id="audiotag3" src="assets/sounds/mlt.wav" preload="auto"></audio>
@@ -96,15 +96,11 @@
     <audio id="audiotag6" src="assets/sounds/humperdink.wav" preload="auto"></audio>
     <audio id="audiotag7" src="assets/sounds/buttercup.wav" preload="auto"></audio>
     <audio id="audiotag8" src="assets/sounds/westley.mp3" preload="auto"></audio>
-
-
-
-
-
-
-
-
-
+    <!-- end game audio -->
+    <audio src="assets/sounds/1st.mp3" id="greatWins"></audio>
+    <audio src="assets/sounds/2nd.mp3" id="goodWins"></audio>
+    <audio src="assets/sounds/3rd.mp3" id="badWins"></audio>
+    <audio src="assets/sounds/inconceivable.wav" id="inconceivable"></audio>
 
     <script src="assets/js/main.js"></script>
 
