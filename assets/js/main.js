@@ -302,7 +302,7 @@ var game = {
         } else if (game.wins ==4 || game.wins ==3) {
             document.getElementById("badWins").play()
         } else {
-            document.getElementById("inconceivable").play()
+            document.getElementById("incon").play()
 
         }
     },
