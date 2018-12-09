@@ -1,4 +1,18 @@
 # Word-Guess-Game
+Version too late to fix
+
+Found that when deployed to github pages, the picture for inigo montoya would not load.
+
+Did not notice until after deadline had passed, so I am just updating the README file.
+
+I am not sure the cause, the js has inigo.png not capitalized while the file name is Inigo.png;
+However does work on local file. Would push that update to see if that was cause.
+
+If still not loading, would pick another picture. 
+
+Sorry that I did not catch this issue earlier.
+
+---------------------------------------------------
 Version 8
 
 Basically finished, will probably be spending the rest of time until it is due tinkering, breaking, then fixing things
